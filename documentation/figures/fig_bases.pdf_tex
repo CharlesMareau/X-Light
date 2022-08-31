@@ -1,0 +1,75 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'fig_bases.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{274.619667bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.65360723)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{fig_bases.pdf}}%
+    \put(0.4622884,0.62134024){\color[rgb]{0,0,0}\rotatebox{-1.0753181}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\omega$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{fig_bases.pdf}}%
+    \put(0.86395341,0.20564475){\color[rgb]{0,0,0}\rotatebox{-17.451838}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Source\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{fig_bases.pdf}}%
+    \put(0.4914299,0.00240779){\color[rgb]{0,0,0}\rotatebox{-1.1439739}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}D\'etecteur\end{tabular}}}}}%
+    \put(0.2921081,0.37024965){\color[rgb]{0,0,0}\rotatebox{-17.451838}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$e_2\equiv s_2$\end{tabular}}}}}%
+    \put(0.20292175,0.24334739){\color[rgb]{0,0,0}\rotatebox{-0.3203678}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$2\theta$\end{tabular}}}}}%
+    \put(0.06002656,0.06545592){\color[rgb]{0,0,0}\rotatebox{-1.0753181}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\phi$\end{tabular}}}}}%
+    \put(0.07492644,0.45111674){\color[rgb]{0,0,0}\rotatebox{-1.0753181}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\chi$\end{tabular}}}}}%
+    \put(0.26230391,0.28012681){\color[rgb]{0,0,0}\rotatebox{-0.32036786}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\alpha$\end{tabular}}}}}%
+    \put(0.57615905,0.33889615){\color[rgb]{0,0,0}\rotatebox{-17.451838}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Echantillon\end{tabular}}}}}%
+    \put(0.24417113,0.17370888){\color[rgb]{0,0,0}\rotatebox{19.050515}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$e_3\equiv s_3$\end{tabular}}}}}%
+    \put(0.45158983,0.42917914){\color[rgb]{0,0,0}\rotatebox{90.262797}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$e_1\equiv s_1$\end{tabular}}}}}%
+    \put(0.72254733,0.16576481){\color[rgb]{0,0,0}\rotatebox{-30.200281}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$n$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{fig_bases.pdf}}%
+    \put(0.61125419,0.15139233){\color[rgb]{0,0,0}\rotatebox{21.043204}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{fig_bases.pdf}}%
+  \end{picture}%
+\endgroup%

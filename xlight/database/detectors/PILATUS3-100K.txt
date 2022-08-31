@@ -1,0 +1,11 @@
+***DETECTOR: PILATUS3-100K	
+***NUMBER OF PIXELS (nx, ny)
+ 487     195    
+***PIXEL SIZE (deltax, deltay)
+0.172    0.172
+***DETECTOR CENTER (xc, yc)
+258.000000       110.500000
+***DISTANCE TO DETECTOR (d)
+201.8486
+***OCTMASK (MinX, MinX+Y, MinY, MaxX-Y, MaxX, MaxX+Y, MaxY, MaxY-X)
+0   0   0  486 486 681 194 194

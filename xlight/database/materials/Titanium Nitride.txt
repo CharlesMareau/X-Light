@@ -1,0 +1,17 @@
+***Titanium nitride XRD input file
+*CRYSTAL SYSTEM
+CUBIC
+*LATTICE PARAMETERS (a,b,c,alpha,beta and gamma)
+4.240   4.240   4.240   90.   90.   90.
+*PLANES (hkl)
+1  1  1     418000   0.21
+0  0  2     445000   0.19
+2  2  0     424000   0.20
+3  1  1     432000   0.20
+2  2  2     418000   0.21
+0  0  4     445000   0.19
+3  3  1     423000   0.20
+4  2  0     431000   0.20
+4  2  2     424000   0.20
+3  3  3     418000   0.21
+5  1  1     439000   0.19

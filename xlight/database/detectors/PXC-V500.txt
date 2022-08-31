@@ -1,0 +1,11 @@
+***DETECTOR: PXC-V500
+***NUMBER OF PIXELS (nx, ny)
+2048     2048
+***PIXEL SIZE (deltax, deltay)
+0.068    0.068
+***DETECTOR CENTER (xc, yc)
+1008.661      1011.721
+***DISTANCE TO DETECTOR (d)
+222.1785
+***OCTMASK (MinX, MinX+Y, MinY, MaxX-Y, MaxX, MaxX+Y, MaxY, MaxY-X)
+36  627  14  1416  2007  3458   2028  1415 
