@@ -2,7 +2,7 @@
 *CRYSTAL SYSTEM
 HEXAG
 *LATTICE PARAMETERS (a,b,c,alpha,beta and gamma)
-2.5054   2.5054   4.0893   90.   90.   90.
+2.5054   2.5054   4.0893   90.   90.   120.
 *PLANES (hkl)
 0  1  2     415000   0.22
 1  0  4     359000   0.26
