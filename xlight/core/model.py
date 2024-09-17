@@ -226,7 +226,10 @@ class Model():
             if i!=j:
                 Stress[j][i]=Stress[i][j]
                 dStress[j][i]=dStress[i][j]
+        print("Stress",Stress[0][0]*1000.0,Stress[1][1]*1000.0,Stress[2][2]*1000.0,Stress[0][1]*1000.0,Stress[1][2]*1000.0,Stress[2][1]*1000.0)
+        print("dStress",dStress[0][0]*1000.0,dStress[1][1]*1000.0,dStress[2][2]*1000.0,dStress[0][1]*1000.0,dStress[1][2]*1000.0,dStress[2][1]*1000.0)
         return Stress*1000.0,dStress*1000.0
+
                 
         
     

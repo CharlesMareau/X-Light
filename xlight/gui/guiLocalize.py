@@ -319,6 +319,23 @@ class LocalizeWidget(QWidget):
                         self.Function.GetValues(self.model.function)
                         self.Options.GetValues(self.model.function)
                         self.model.Localize(self.progress)
+                        data=self.model.GetLocalizeData()
+                        if data==[]:
+                                msgBox = QMessageBox()
+                                msgBox.setIcon(QMessageBox.Critical)
+                                msgBox.setText("The average integral breadth cannot be evaluated")
+                                msgBox.setWindowTitle("Error")
+                                msgBox.setStandardButtons(QMessageBox.Ok)
+                                returnValue = msgBox.exec()
+                                return
+                        keys=data[0].keys()
+                        breadth=0. #average integral breadth
+                        npk=0 #Number of diffraction peaks
+                        for d in data:
+                                npk=npk+1
+                                breadth=breadth+d["w_hkl"]
+                        breadth=breadth/npk
+                        print("Integral Breadth: "+str(breadth))
                 except BaseException as e:
                         msgBox = QMessageBox()
                         msgBox.setIcon(QMessageBox.Critical)
@@ -362,8 +379,11 @@ class LocalizeWidget(QWidget):
                         #out << k << " "
                 #out << "\n"
                 f.write("\n")
+                breadth=0. #average integral breadth
+                npk=0 #Number of diffraction peaks
                 for d in data:
-                        #print(d)
+                        npk=npk+1
+                        breadth=breadth+d["w_hkl"]
                         for k in keys:
                                 #out << d[k] << " "
                                 #print(type(d[k]))
@@ -379,6 +399,8 @@ class LocalizeWidget(QWidget):
                         #out << "\n"
                         f.write("\n")
                 #out << data
+                breadth=breadth/npk
+                f.write("Integral Breadth: "+str(breadth))
                 f.close()
 		
 		

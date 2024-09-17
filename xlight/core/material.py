@@ -36,11 +36,11 @@ class Material():
                 if (len(latice)!=6):
                         raise Exception("Material: filename "+filename+" is in a bad format")
                 self.a=float(latice[0])
-                self.b=float(latice[0])
-                self.c=float(latice[0])
-                self.alpha=float(latice[0])*np.pi/180.0
-                self.beta=float(latice[0])*np.pi/180.0
-                self.gamma=float(latice[0])*np.pi/180.0
+                self.b=float(latice[1])
+                self.c=float(latice[2])
+                self.alpha=float(latice[3])*np.pi/180.0
+                self.beta=float(latice[4])*np.pi/180.0
+                self.gamma=float(latice[5])*np.pi/180.0
                 self.NPLANES=len(lines)-6
                 if self.NPLANES<1:
                         raise Exception("Material: filename "+filename+" is in a bad format")
@@ -110,5 +110,6 @@ class Material():
                 else:
                         raise Exception("Material: System "+self.System+" do not exists")
                 self.q=2.0*np.pi*np.sqrt(self.q)
+                print(self.q)
 
 
