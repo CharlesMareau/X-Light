@@ -5,4 +5,5 @@ from .readerUXD import *
 from .readerRAW import *
 from .readerNJA import *
 from .readerGFRM import *
+from .readerXY import *
 

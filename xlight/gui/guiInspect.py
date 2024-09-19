@@ -53,8 +53,8 @@ class PowerBar(QWidget):
         layout = QHBoxLayout()
 
 
-        #self.enable = QCheckBox("Enable")
-        #layout.addWidget(self.enable)
+        #self.EnableButton = QCheckBox("Enable")
+        #layout.addWidget(self.EnableButton)
 
         
 
@@ -89,9 +89,14 @@ class PowerBar(QWidget):
         self.lastButton.setIcon(icon)
         layout.addWidget(self.lastButton)
 
+        #
+        # self.test=AngleWidget()
+        # self.test.AngleLabel.setText("test"+" ("+"\u00B0"+")")
+        # self.test.AngleEdit.setText("1.1")
+        # layout.addWidget(self.test)
+        # layout.addRow(self.test)
+
         self.setLayout(layout)
-
-
 
 
 class InfoWidget(QWidget):
@@ -100,53 +105,124 @@ class InfoWidget(QWidget):
 
         self.profil=None
         
-        layout = QVBoxLayout()
+        self.setFixedWidth(200)
+# Vertical layout for information widget
+        layout = QFormLayout()
+
+# Create Lock/Unlock Button
+        self.LockUnlockButton = QPushButton("Edit angles")
+# Create Label and Edit text box for Khi angle
         self.KhiLabel=QLabel()
+        self.KhiLabel.setText("\u03c7"+" ("+"\u00B0"+")")
+        self.KhiEdit=QLineEdit()
+        self.KhiEdit.setMaxLength(10)
+        self.KhiEdit.setReadOnly(True)
+        self.KhiEdit.validator = QDoubleValidator()
+        self.KhiEdit.setValidator(self.KhiEdit.validator)
+        self.KhiEdit.setStyleSheet('QLineEdit {background-color: #d7d6d5}')
+# Create Label and Edit text box for Phi angle
         self.PhiLabel=QLabel()
+        self.PhiLabel.setText("\u03c6"+" ("+"\u00B0"+")")
+        self.PhiEdit=QLineEdit()
+        self.PhiEdit.setMaxLength(10)
+        self.PhiEdit.setReadOnly(True)
+        self.PhiEdit.validator = QDoubleValidator()
+        self.PhiEdit.setValidator(self.PhiEdit.validator)
+        self.PhiEdit.setStyleSheet('QLineEdit {background-color: #d7d6d5}')
+# Create Label and Edit text box for Gamma angle
         self.GammaLabel=QLabel()
+        self.GammaLabel.setText("\u03b3"+" ("+"\u00B0"+")")
+        self.GammaEdit=QLineEdit()
+        self.GammaEdit.setMaxLength(10)
+        self.GammaEdit.setReadOnly(True)
+        self.GammaEdit.validator = QDoubleValidator()
+        self.GammaEdit.setValidator(self.GammaEdit.validator)
+        self.GammaEdit.setStyleSheet('QLineEdit {background-color: #d7d6d5}')
+
+        self.AngleLabel=QLabel()
+        self.AngleLabel.setText("")
+        self.EmptyLabel=QLabel()
+        self.EmptyLabel.setText("")
+        self.EnableLabel=QLabel()
+        self.EnableLabel.setText("")
+        
         self.TimeLabel=QLabel()
         self.AnodeLabel=QLabel()
         self.R2Label=QLabel()
+        
         layout.addWidget(self.KhiLabel)
+        layout.addWidget(self.KhiEdit)
         layout.addWidget(self.PhiLabel)
+        layout.addWidget(self.PhiEdit)
         layout.addWidget(self.GammaLabel)
+        layout.addWidget(self.GammaEdit)
+        layout.addWidget(self.LockUnlockButton)
+        layout.addWidget(self.AngleLabel)
+        layout.addWidget(self.EmptyLabel)
         layout.addWidget(self.TimeLabel)
         layout.addWidget(self.AnodeLabel)
         layout.addWidget(self.R2Label)
 
-        #self.enable = QCheckBox("Enable")
-        self.enable = QPushButton()
-        self.enable.setCheckable(True)
-        layout.addWidget(self.enable)
+        #self.EnableButton = QCheckBox("Enable")
+        self.EnableButton = QPushButton("Exclude data")
+        # self.EnableButton.setCheckable(True)
+        layout.addWidget(self.EnableButton)
+        layout.addWidget(self.EnableLabel)
 
 
         #redb = QPushButton('Red', self)
         #redb.setCheckable(True)
         #layout.addWidget(redb)
-        #self.enable.stateChanged.connect(lambda:self.stateProfil())
+        #self.EnableButton.stateChanged.connect(lambda:self.stateProfil())
+
+        self.LockUnlockButton.clicked.connect(lambda:self.LockUnlock())
         self.Set()
 
         self.setLayout(layout)
         
+
+    def LockUnlock(self):
+        if (self.KhiEdit.isReadOnly()):
+            self.LockUnlockButton.setText("Lock angles")
+            self.KhiEdit.setReadOnly(False)
+            self.KhiEdit.setStyleSheet('QLineEdit {background-color: #ffffff}')
+        else:
+            self.LockUnlockButton.setText("Edit angles")
+            self.KhiEdit.setReadOnly(True)
+            self.KhiEdit.setStyleSheet('QLineEdit {background-color: #d7d6d5}')
+        if (self.PhiEdit.isReadOnly()):
+            self.PhiEdit.setReadOnly(False)
+            self.PhiEdit.setStyleSheet('QLineEdit {background-color: #ffffff}')
+        else:
+            self.PhiEdit.setReadOnly(True)
+            self.PhiEdit.setStyleSheet('QLineEdit {background-color: #d7d6d5}')
+        if (self.GammaEdit.isReadOnly()):
+            self.GammaEdit.setStyleSheet('QLineEdit {background-color: #ffffff}')
+            self.GammaEdit.setReadOnly(False)
+        else:
+            self.GammaEdit.setReadOnly(True)
+            self.GammaEdit.setStyleSheet('QLineEdit {background-color: #d7d6d5}')
+    
     def Set(self,profil=None):
         if profil:
-            khi="%1.2f" % (profil.Khi)
-            self.KhiLabel.setText("\u03c7="+khi+"\u00B0")
-            phi="%1.2f" % (profil.Phi)
-            self.PhiLabel.setText("\u03c6="+phi+"\u00B0")
-            gamma="%1.2f" % (profil.Gamma)
-            self.GammaLabel.setText("\u03b3="+gamma+"\u00B0")
+            self.KhiEdit.setText(str(profil.Khi))
+            self.PhiEdit.setText(str(profil.Phi))
+            self.GammaEdit.setText(str(profil.Gamma))
             time="%1.2f" % (profil.Time)
             self.TimeLabel.setText("Time="+time+"s")
             self.AnodeLabel.setText("Anode="+str(profil.Anode.name))
 
+            self.LockUnlockButton.setVisible(True)
             self.KhiLabel.setVisible(True)
+            self.KhiEdit.setVisible(True)
             self.PhiLabel.setVisible(True)
+            self.PhiEdit.setVisible(True)
             self.GammaLabel.setVisible(True)
+            self.GammaEdit.setVisible(True)
             self.TimeLabel.setVisible(True)
             self.AnodeLabel.setVisible(True)
             #self.R2Label.setVisible(True)
-            self.enable.setVisible(True)
+            self.EnableButton.setVisible(True)
             
             if profil.Fun.IsInit:
                 R2="%1.3f" % (profil.Fun.r_squared)
@@ -156,40 +232,42 @@ class InfoWidget(QWidget):
                 self.R2Label.setText("R\u00b2=")
                 self.R2Label.setVisible(False)
             self.profil=profil
-            if profil.IsEnable:
-                self.enable.setChecked(True)
-            else:
-                self.enable.setChecked(False)
+            # if profil.IsEnable:
+                # self.EnableButton.setChecked(True)
+            # else:
+                # self.EnableButton.setChecked(False)
             
-            #self.enable.stateChanged.connect(self.stateProfil())
+            #self.EnableButton.stateChanged.connect(self.stateProfil())
         else:
-            self.KhiLabel.setText("\u03c7=")
-            self.PhiLabel.setText("\u03c6=")
-            self.GammaLabel.setText("\u03b3=")
             self.TimeLabel.setText("Time=")
             self.AnodeLabel.setText("Anode=")
             self.R2Label.setText("R\u00b2=")
+
+            self.LockUnlockButton.setVisible(False)
             self.KhiLabel.setVisible(False)
+            self.KhiEdit.setVisible(False)
             self.PhiLabel.setVisible(False)
+            self.PhiEdit.setVisible(False)
             self.GammaLabel.setVisible(False)
+            self.GammaEdit.setVisible(False)
             self.TimeLabel.setVisible(False)
             self.AnodeLabel.setVisible(False)
             self.R2Label.setVisible(False)
-            self.enable.setChecked(False)
-            self.enable.setVisible(False)
+            # self.EnableButton.setChecked(False)
+            self.EnableButton.setVisible(False)
 
-        if self.enable.isChecked():
-            self.enable.setText("Enable")
-            self.enable.setStyleSheet('QPushButton {background-color: green}')
-        else:
-            self.enable.setText("Disable")
-            self.enable.setStyleSheet('QPushButton {background-color: red}')
+        # if self.EnableButton.isChecked():
+            # self.EnableButton.setText("Enabled")
+            # self.EnableButton.setStyleSheet('QPushButton {background-color: #ffffff}')
+        # else:
+            # self.EnableButton.setText("Disabled")
+            # self.EnableButton.setStyleSheet('QPushButton {background-color: #d7d6d5}')
             #self.profil=None
     #def stateProfil(self):
     #    print("HHH")
     #    if self.profil:
-    #        self.profil.SetEnable(self.enable.isChecked())
-    #        if self.enable.isChecked():
+    #        self.profil.SetEnable(self.EnableButton.isChecked())
+    #        if self.EnableButton.isChecked():
     #            #self.profil.Enable=True
     #            print("toto")
     #        else:
@@ -218,8 +296,6 @@ class InspectWidget(QWidget):
         super(InspectWidget, self).__init__(parent)
         self.model=model
 
-
-
         self.figure = plt.figure()
         self.ax=self.figure.add_subplot(111)
         
@@ -237,9 +313,6 @@ class InspectWidget(QWidget):
         self.layout = QGridLayout(self)
         
 
-
-
-
         self.Displacement=PowerBar(self)
         self.layout.addWidget(self.Displacement,0,0,1,1)
         self.iprofil=0
@@ -252,8 +325,15 @@ class InspectWidget(QWidget):
 
         self.info=InfoWidget()
         self.layout.addWidget(self.info,1,2)
-        self.info.enable.clicked.connect(lambda:self.ChangeState())
+        self.info.EnableButton.clicked.connect(lambda:self.ChangeState())
         self.ChangeState()
+        
+        self.info.KhiEdit.returnPressed.connect(lambda:self.ModifyKhi())
+        self.ModifyKhi()
+        self.info.PhiEdit.returnPressed.connect(lambda:self.ModifyPhi())
+        self.ModifyPhi()
+        self.info.GammaEdit.returnPressed.connect(lambda:self.ModifyGamma())
+        self.ModifyGamma()
 
 
         self.Displacement.nextButton.clicked.connect(self.Next)
@@ -262,20 +342,50 @@ class InspectWidget(QWidget):
         self.Displacement.previousButton.clicked.connect(self.Previous)
         self.Displacement.firstButton.clicked.connect(self.First)
 
-
-
-
         
         self.setLayout(self.layout)
         self.SetDisplay()
 
 
         return
+        
+    def ModifyKhi(self):
+        if self.iprofil>=0 and self.iprofil<len(self.model.profils):
+            val=float(self.info.KhiEdit.text())
+            self.model.profils[self.iprofil].Khi=val
+            self.ReLoad()
+            self.info.AngleLabel.setText("Khi angle has been edited!")
+
+    def ModifyPhi(self):
+        if self.iprofil>=0 and self.iprofil<len(self.model.profils):
+            val=float(self.info.PhiEdit.text())
+            self.model.profils[self.iprofil].Phi=val
+            self.ReLoad()
+            self.info.AngleLabel.setText("Phi angle has been edited!")
+
+    def ModifyGamma(self):
+        if self.iprofil>=0 and self.iprofil<len(self.model.profils):
+            val=float(self.info.GammaEdit.text())
+            self.model.profils[self.iprofil].Gamma=val
+            self.ReLoad()
+            self.info.AngleLabel.setText("Gamma angle has been edited!")
 
     def ChangeState(self):
-        #print("zzz")
         if self.iprofil>=0 and self.iprofil<len(self.model.profils):
-            self.model.profils[self.iprofil].SetEnable(self.info.enable.isChecked())
+            if self.model.profils[self.iprofil].IsEnable:
+                self.model.profils[self.iprofil].SetEnable(False)
+                self.info.EnableButton.setText("Include data")
+                self.info.EnableButton.setStyleSheet('QPushButton {background-color: #ffffff}')
+                self.info.EnableLabel.setText("Profile has been excluded!")
+                print("Profile has been excluded!")
+            else:
+                self.model.profils[self.iprofil].SetEnable(True)
+                self.info.EnableButton.setText("Exclude data")
+                self.info.EnableButton.setStyleSheet('QPushButton {background-color: #d7d6d5}')
+                self.info.EnableLabel.setText("Profile has been included!")
+                print("Profile has been included!")
+            #self.model.profils[self.iprofil].SetEnable(self.info.EnableButton.isChecked())
+            # self.model.profils[self.iprofil].SetEnable(True)
             self.ReLoad()
 
     def Next(self):
@@ -305,6 +415,7 @@ class InspectWidget(QWidget):
         #self.ReLoad()
     def SetDisplay(self):
         self.Displacement.lcd.display(self.iprofil+1)
+        self.info.EnableLabel.setText("")
         self.ReLoad()
 
 
@@ -319,6 +430,12 @@ class InspectWidget(QWidget):
         if self.iprofil>=0 and self.iprofil<len(self.model.profils):
             ppp=self.model.profils[self.iprofil]
             self.info.Set(self.model.profils[self.iprofil])
+            if self.model.profils[self.iprofil].IsEnable:
+                self.info.EnableButton.setText("Exclude data")
+                self.info.EnableButton.setStyleSheet('QPushButton {background-color: #d7d6d5}')
+            else:
+                self.info.EnableButton.setText("Include data")
+                self.info.EnableButton.setStyleSheet('QPushButton {background-color: #ffffff}')
             self.ax.plot(ppp.TwoTheta,ppp.Intensity,'*-',label="experiment", color='black')
             if ppp.Fun.IsInit and ppp.IsEnable:
                 ii=ppp.GetFunctionData(False)
