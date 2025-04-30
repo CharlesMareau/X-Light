@@ -541,9 +541,7 @@ class StressWidget(QWidget):
         dh=dphi/45.0
         x=-0.5*dh*np.cos((phi)*np.pi/180.0)+np.sin((phi)*np.pi/180.0)
         y=-0.5*dh*np.sin((phi)*np.pi/180.0)-np.cos((phi)*np.pi/180.0)
-        ax.add_patch(patches.Rectangle((x,y),dh,2.0,phi,edgecolor='yellow',facecolor='yellow',fill=True))
-                
-            
+        ax.add_patch(patches.Rectangle((x,y),dh,2.0,angle=phi,edgecolor='yellow',facecolor='yellow',fill=True))
         ax.scatter(x2,y2,color='grey')
         ax.scatter(x1,y1,color='red')
 
