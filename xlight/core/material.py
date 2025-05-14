@@ -110,6 +110,6 @@ class Material():
                 else:
                         raise Exception("Material: System "+self.System+" do not exists")
                 self.q=2.0*np.pi*np.sqrt(self.q)
-                print(self.q)
+                # print(self.q)
 
 

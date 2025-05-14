@@ -58,7 +58,7 @@ class ReaderWidget(QWidget):
 
         #layout2
 
-        
+        self.OldPath=Path.home()
         self.button = QPushButton("Import data")
 
         #self.button.setStyleSheet("background-color:rgb(209,1,35)")
@@ -97,7 +97,7 @@ class ReaderWidget(QWidget):
         #exts=core.read.GetExt()
 
         re=GetListReader()
-        ff=""
+        ff="All Files (*.*);;"
         n=0
         for r in re:
             if n>0:
@@ -125,18 +125,16 @@ class ReaderWidget(QWidget):
         #file_name.setFileMode(QFileDialog.ExistingFiles)
         #names = file_name.getOpenFilesNameAndFilter(self, "Open files", "C\\Desktop", filter)
         #print(names)
-
-
-        
-      
-        fileNames = QFileDialog.getOpenFileNames(None, "Open File(s)", str(Path.home()), ff, options=QFileDialog.DontUseNativeDialog)
+        fileNames = QFileDialog.getOpenFileNames(None, "Open File(s)", str(self.OldPath), ff, options=QFileDialog.DontUseNativeDialog)
         #print(fileNames[0])
+
         msg="Error, file can not be opened"
         if fileNames[0]:
             msg=""
             for f in fileNames[0]:
                 try:
                     self.model.ImportFile(str(f))
+                    self.OldPath=os.path.dirname(f)
                     msg="File "+str(f)+" is opened succefully"
                 except BaseException as e:
                     msg=str(e)
